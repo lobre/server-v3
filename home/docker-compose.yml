@@ -1,5 +1,6 @@
 nginx:
   image: nginx
+  container_name: home
   volumes:
     - "/usr/share/nginx/html"
   environment:
@@ -8,6 +9,7 @@ nginx:
 
 gen:
   image: jwilder/docker-gen
+  container_name: home-gen
   command: "-watch -only-exposed /etc/docker-gen/templates/template.html /usr/share/nginx/html/index.html"
   volumes:
     - "/var/run/docker.sock:/tmp/docker.sock:ro"
