@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Server applications</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+    <style>
+        body {
+            font-family: 'Open Sans';
+        }
+        a { text-decoration: none; }
+        a:hover { text-decoration: none; color: white; }
+        a.item {
+            display: block;
+            height: 90px;
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            line-height: 80px;
+            text-align: center;
+            color: #656565;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        a.item:hover {
+            border-color: #337ab7;
+        }
+        div.item-wrapper {
+            height: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Server applications</h1>
+            </div>
+
+            {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
+                {{ range $index, $value := $containers }}
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <a href="http://{{ $host }}" target="_blank" class="item">
+                            <div class="item-wrapper">{{$value.Name}}</div>
+                        </a>
+                    </div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $(".item-wrapper").each(function() {
+                var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
+                $(this).css("background-color", hue);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
