@@ -20,5 +20,6 @@ nginx:
   volumes:
     - "/var/run/docker.sock:/tmp/docker.sock:ro"
     - "./certs:/etc/nginx/certs"
+    - "./passwords:/etc/nginx/htpasswd"
   environment:
     - DEFAULT_HOST=home.lobr.fr
