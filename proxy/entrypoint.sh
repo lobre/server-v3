@@ -6,23 +6,23 @@ if [ -z "${SERVER}" ]; then
   exit 1
 fi
 
-if [ ! -z "${EMAIL}" ]; then
+if [ -z "${EMAIL}" ]; then
   EMAIL="email@email.com"
 fi
 
-if [ ! -z "${ORGANIZATION}" ]; then
+if [ -z "${ORGANIZATION}" ]; then
   ORGANIZATION="org"
 fi
 
-if [ ! -z "${COUNTRY_CODE}" ]; then
+if [ -z "${COUNTRY_CODE}" ]; then
   COUNTRY_CODE="FR"
 fi
 
-if [ ! -z "${STATE}" ]; then
+if [ -z "${STATE}" ]; then
   STATE="France"
 fi
 
-if [ ! -z "${LOCALITY}" ]; then
+if [ -z "${LOCALITY}" ]; then
   LOCALITY="Lyon"
 fi
 
