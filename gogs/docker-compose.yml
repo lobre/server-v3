@@ -1,8 +1,20 @@
 app:
   image: gogs/gogs
   container_name: gogs
+  links:
+    - db
+  ports:
+    - "3000:3000"
+    - "10022:22"
   volumes:
     - "./data:/data"
   environment:
     - VIRTUAL_HOST=gogs.lobr.fr
     - VIRTUAL_PORT=3000
+
+db:
+  image: mysql
+  container_name: gogs-db
+  environment:
+    - MYSQL_ROOT_PASSWORD=gogs
+    - MYSQL_DATABASE=gogs
