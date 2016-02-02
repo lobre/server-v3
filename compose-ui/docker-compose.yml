@@ -1,8 +1,0 @@
-app:
-  image: francescou/docker-compose-ui:1.0.RC1
-  container_name: compose-ui
-  volumes:
-    - "/var/run/docker.sock:/var/run/docker.sock"
-    - "..:/opt/docker-compose-projects"
-  environment:
-    - VIRTUAL_HOST=compose.lobr.fr
