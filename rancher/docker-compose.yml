@@ -1,0 +1,5 @@
+app:
+  image: rancher/server
+  container_name: rancher
+  environment:
+    - VIRTUAL_HOST=rancher.lobr.fr
