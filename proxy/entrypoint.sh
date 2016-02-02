@@ -26,12 +26,14 @@ if [ -z "${LOCALITY}" ]; then
   LOCALITY="Lyon"
 fi
 
-openssl req \
-  -new \
-  -nodes \
-  -x509 \
-  -subj "/C=${COUNTRY_CODE}/ST=${STATE}/L=${LOCALITY}/O=${ORGANIZATION}/CN=*.${SERVER}/emailAddress=${EMAIL}/subjectAltName=DNS.1=${SERVER}" \
-  -days 3650 \
-  -keyout /certificates/${SERVER}.key \
-  -out /certificates/${SERVER}.crt \
-  -extensions v3_ca \
+if [ ! -f "/certificates/${SERVER}.key" ] || [ ! -f "/certificates/${SERVER}.crt" ]; then
+    openssl req \
+      -new \
+      -nodes \
+      -x509 \
+      -subj "/C=${COUNTRY_CODE}/ST=${STATE}/L=${LOCALITY}/O=${ORGANIZATION}/CN=*.${SERVER}/emailAddress=${EMAIL}/subjectAltName=DNS.1=${SERVER}" \
+      -days 3650 \
+      -keyout /certificates/${SERVER}.key \
+      -out /certificates/${SERVER}.crt \
+      -extensions v3_ca \
+fi
