@@ -1,0 +1,8 @@
+app:
+  image: gogs/gogs
+  container_name: gogs
+  volumes:
+    - "./data:/data"
+  environment:
+    - VIRTUAL_HOST=gogs.lobr.fr
+    - VIRTUAL_PORT=3000
