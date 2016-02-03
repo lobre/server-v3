@@ -24,6 +24,8 @@ ftp:
 pydio:
   image: linuxserver/pydio
   container_name: pydio
+  links:
+    - pydio-db
   volumes:
     - "./data:/data/files"
     - "/etc/localtime:/etc/localtime:ro"
@@ -33,6 +35,13 @@ pydio:
     - VIRTUAL_HOST=pydio.lobr.fr
     - VIRTUAL_PORT=443
     - VIRTUAL_PROTO=https
+
+pydio-db:
+  image: mysql
+  container_name: pydio-db
+  environment:
+    - MYSQL_ROOT_PASSWORD=pydio
+    - MYSQL_DATABASE=pydio
 
 deluge:
   image: linuxserver/deluge

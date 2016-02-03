@@ -36,3 +36,14 @@ Add plex as connection.
 
     host: lobr.fr
     port: 32400
+
+# Pydio
+
+Database connection.
+
+Database Type = MySQL
+Host = pydio-db
+Database = pydio
+User = root
+Password = pydio
+Use MySQLi = no
