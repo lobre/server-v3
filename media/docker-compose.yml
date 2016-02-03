@@ -1,0 +1,21 @@
+browser:
+  image: clue/h5ai
+  container_name: browser
+  volumes:
+    - "./data:/var/www"
+  environment:
+    - DEFAULT_HOST=browser.lobr.fr
+
+ftp:
+  image: damienlagae/ftp
+  container_name: ftp
+  volumes:
+    - "./data:/var/ftp"
+  ports:
+    - "20:20"
+    - "21:21"
+    - "12020:12020"
+    - "12021:12021"
+  environment:
+    - FTP_USER=admin
+    - FTP_PASS=ftp01
