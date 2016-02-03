@@ -4,7 +4,7 @@ browser:
   volumes:
     - "./data:/var/www"
   environment:
-    - DEFAULT_HOST=browser.lobr.fr
+    - VIRTUAL_HOST=browser.lobr.fr
 
 ftp:
   image: damienlagae/ftp
