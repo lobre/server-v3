@@ -1,0 +1,19 @@
+[INFO    ] 20:08:25 configmanager:70 Setting config directory to: /config
+[INFO    ] 20:08:25 daemon:124 Deluge daemon 1.3.12
+[INFO    ] 20:08:25 configmanager:70 Setting config directory to: /config
+[INFO    ] 20:08:25 core:80 Starting libtorrent 1.0.7.0 session..
+[INFO    ] 20:08:25 rpcserver:367 Starting DelugeRPC server :58846
+[INFO    ] 20:08:25 core:97 *** Start Label plugin ***
+[WARNING ] 20:08:25 config:361 Unable to open config file /config/label.conf: [Errno 2] No such file or directory: '/config/label.conf'
+[INFO    ] 20:08:25 pluginmanagerbase:158 Plugin Label enabled..
+[INFO    ] 20:08:25 torrentmanager:642 Successfully loaded state file: /config/state/torrents.state
+[WARNING ] 20:08:25 torrentmanager:653 Unable to update state file to a compatible version: list index out of range
+[WARNING ] 20:08:25 torrentmanager:762 Unable to load fastresume file: [Errno 2] No such file or directory: '/config/state/torrents.fastresume'
+[WARNING ] 20:08:25 torrentmanager:762 Unable to load fastresume file: [Errno 2] No such file or directory: '/config/state/torrents.fastresume.bak'
+[INFO    ] 20:08:28 rpcserver:204 Deluge Client connection made from: 127.0.0.1:56533
+[INFO    ] 20:08:28 rpcserver:204 Deluge Client connection made from: 127.0.0.1:56535
+[INFO    ] 20:08:28 rpcserver:224 Deluge client disconnected: Connection to the other side was lost in a non-clean fashion: Connection lost.
+[INFO    ] 20:08:28 rpcserver:224 Deluge client disconnected: Connection to the other side was lost in a non-clean fashion: Connection lost.
+[INFO    ] 20:08:30 rpcserver:204 Deluge Client connection made from: 127.0.0.1:56537
+[INFO    ] 20:08:30 rpcserver:224 Deluge client disconnected: Connection to the other side was lost in a non-clean fashion: Connection lost.
+[INFO    ] 20:08:31 rpcserver:204 Deluge Client connection made from: 127.0.0.1:56539
