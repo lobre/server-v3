@@ -1,1 +1,9 @@
 /config/deluged.log
+/config/deluged.pid
+/config/dht.state
+/config/session.state
+/config/ssl/*
+/config/state/*
+/config/icons/*
+/config/plugins/*
+/config/web.conf~
