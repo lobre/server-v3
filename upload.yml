@@ -1,0 +1,15 @@
+---
+
+- name: Pull apps
+  hosts: host
+  remote_user: docker
+
+  vars:
+    git: https://github.com/loric-/docker-server-apps.git
+
+  tasks:
+    - name: Pull from git
+      git: >
+        repo={{ git }}
+        dest="/home/docker/apps"
+        force=yes

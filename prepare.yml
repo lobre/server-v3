@@ -1,0 +1,61 @@
+---
+
+- name: Prepare docker server
+  hosts: host
+  remote_user: root
+
+  vars:
+    user_name: docker
+    user_group: docker
+    user_password: docker
+
+  tasks:
+    - name: Update apt cache if needed
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Add Docker repository key
+      apt_key:
+        id: "2C52609D"
+        url: "https://apt.dockerproject.org/gpg"
+        state: present
+
+    - name: Add docker repository
+      apt_repository: >
+        repo="deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+        update_cache=yes
+        state=present
+
+    - name: Install required tools
+      apt: name={{ item }} state=present
+      with_items:
+        - sudo
+        - docker-engine
+        - python-pip
+
+    - name: Install python required packages
+      pip: name={{ item }} state=present
+      with_items:
+        - docker-py
+        - docker-compose
+
+    - name: Create docker user
+      user: name="{{ user_name }}" group="{{ user_group }}"
+
+    - name: Change password of docker user
+      shell: "echo {{ user_name }}:{{ user_password }} | /usr/sbin/chpasswd"
+
+    - name: Enable sudo for user without password
+      lineinfile: >
+        dest=/etc/sudoers
+        state=present
+        regexp="^{{ user_name }}"
+        line="{{ user_name }} ALL=(ALL) NOPASSWD:ALL"
+
+    - name: Register local SSH public key
+      local_action: command echo "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+      register: ssh_path
+
+    - name: Upload SSH key for docker user
+      authorized_key: >
+        user="{{ user_name }}"
+        key="{{ lookup('file', ssh_path.stdout) }}"
