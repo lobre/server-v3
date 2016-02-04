@@ -5,6 +5,7 @@ app:
     - "8989:8989"
   volumes:
     - "/dev/rtc:/dev/rtc:ro"
+    - "./config:/config"
     - "../data/media/Downloads:/downloads"
     - "../data/media/Series:/tv"
   environment:

@@ -4,6 +4,7 @@ app:
   ports:
     - "32400:32400"
   volumes:
+    - "./config:/config"
     - "../data/media:/data"
   environment:
     - PUID=1000

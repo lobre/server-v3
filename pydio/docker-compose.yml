@@ -5,6 +5,7 @@ app:
     - db
   volumes:
     - "../data/media:/data/files"
+    - "./config:/config"
     - "/etc/localtime:/etc/localtime:ro"
   environment:
     - PUID=1000

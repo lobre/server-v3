@@ -5,6 +5,7 @@ app:
     - "8112:8112"
     - "58846:58846"
   volumes:
+    - "./config:/config"
     - "../data/media/Downloads:/downloads"
   environment:
     - PUID=1000

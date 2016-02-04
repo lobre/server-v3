@@ -5,6 +5,7 @@ app:
     - "5050:5050"
   volumes:
     - "/etc/localtime:/etc/localtime:ro"
+    - "./config:/config"
     - "../data/media/Downloads:/downloads"
     - "../data/media/Movies:/movies"
   environment:

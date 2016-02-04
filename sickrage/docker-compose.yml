@@ -5,6 +5,7 @@ app:
     - "8081:8081"
   volumes:
     - "/etc/localtime:/etc/localtime:ro"
+    - "./config:/config"
     - "../data/media/Downloads:/downloads"
     - "../data/media/Series:/tv"
   environment:
