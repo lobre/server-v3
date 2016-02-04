@@ -3,7 +3,7 @@
 Database connection.
 
 Database Type = MySQL
-Host = pydio-db
+Host = db
 Database = pydio
 User = root
 Password = pydio
