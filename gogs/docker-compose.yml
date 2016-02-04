@@ -7,7 +7,7 @@ app:
     - "3000:3000"
     - "10022:22"
   volumes:
-    - "./data:/data"
+    - "../data/gogs:/data"
   environment:
     - VIRTUAL_HOST=gogs.lobr.fr
     - VIRTUAL_PORT=3000

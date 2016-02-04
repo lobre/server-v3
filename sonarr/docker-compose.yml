@@ -1,0 +1,14 @@
+app:
+  image: linuxserver/sonarr
+  container_name: sonarr
+  ports:
+    - "8989:8989"
+  volumes:
+    - "/dev/rtc:/dev/rtc:ro"
+    - "../data/media/Downloads:/downloads"
+    - "../data/media/Series:/tv"
+  environment:
+    - PUID=1000
+    - PGID=1000
+    - VIRTUAL_HOST=sonarr.lobr.fr
+    - VIRTUAL_PORT=8989
