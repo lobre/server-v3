@@ -8,7 +8,7 @@ app:
     - "65000-65004:65000-65004"
   environment:
     - FTP_USER=admin
-    - FTP_PASS=media012
+    - FTP_PASS=ftp012
     - HOST=lobr.fr
     - PASV_MIN_PORT=65000
     - PASV_MAX_PORT=65004
