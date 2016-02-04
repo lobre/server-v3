@@ -2,7 +2,7 @@ generate_certificate:
   build: .
   container_name: generate-certificate
   volumes:
-    - ./certs:/certificates
+    - ../data/certs:/certificates
   environment:
     - SERVER=lobr.fr
     - EMAIL=loric.brevet@gmail.com
