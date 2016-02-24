@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-
   app:
     image: gogs/gogs
     container_name: gogs
@@ -24,6 +23,5 @@ services:
       - MYSQL_DATABASE=gogs
 
 volumes:
-  
   gogs:
     driver: local

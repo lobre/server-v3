@@ -1,18 +1,23 @@
-nginx:
-  image: nginx
-  container_name: home
-  volumes:
-    - "/usr/share/nginx/html"
-  environment:
-    - VIRTUAL_HOST=home.lobr.fr
-    - VIRTUAL_PORT=80
+version: '2'
 
-gen:
-  image: jwilder/docker-gen
-  container_name: home-gen
-  command: "-watch -only-exposed /etc/docker-gen/templates/template.html /usr/share/nginx/html/index.html"
-  volumes:
-    - "/var/run/docker.sock:/tmp/docker.sock:ro"
-    - "./web:/etc/docker-gen/templates"
-  volumes_from:
-    - nginx
+services:
+  nginx:
+    image: nginx
+    container_name: home
+    volumes:
+      - "web:/usr/share/nginx/html"
+    environment:
+      - VIRTUAL_HOST=home.lobr.fr
+      - VIRTUAL_PORT=80
+
+  gen:
+    image: jwilder/docker-gen
+    container_name: home-gen
+    command: "-watch -only-exposed /etc/docker-gen/templates/template.html /usr/share/nginx/html/index.html"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "./web:/etc/docker-gen/templates"
+
+volumes:
+  web:
+    driver: local

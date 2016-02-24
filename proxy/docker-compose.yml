@@ -1,25 +1,28 @@
-generate_certificate:
-  build: .
-  container_name: generate-certificate
-  volumes:
-    - ../data/certs:/certificates
-  environment:
-    - SERVER=lobr.fr
-    - EMAIL=loric.brevet@gmail.com
-    - ORGANIZATION=lobr
-    - COUNTRY_CODE=FR
-    - STATE=France
-    - LOCALITY=Lyon
+version: '2'
 
-nginx:
-  image: jwilder/nginx-proxy
-  container_name: proxy
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - "/var/run/docker.sock:/tmp/docker.sock:ro"
-    - "../data/certs:/etc/nginx/certs"
-    - "./passwords:/etc/nginx/htpasswd"
-  environment:
-    - DEFAULT_HOST=home.lobr.fr
+services:
+  generate_certificate:
+    build: .
+    container_name: generate-certificate
+    volumes:
+      - ../data/certs:/certificates
+    environment:
+      - SERVER=lobr.fr
+      - EMAIL=loric.brevet@gmail.com
+      - ORGANIZATION=lobr
+      - COUNTRY_CODE=FR
+      - STATE=France
+      - LOCALITY=Lyon
+
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "../data/certs:/etc/nginx/certs"
+      - "./passwords:/etc/nginx/htpasswd"
+    environment:
+      - DEFAULT_HOST=home.lobr.fr

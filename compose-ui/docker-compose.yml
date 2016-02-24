@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-  
   app:
     image: francescou/docker-compose-ui:1.0.RC1
     container_name: compose-ui
