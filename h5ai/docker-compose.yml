@@ -1,7 +1,11 @@
-app:
-  image: clue/h5ai
-  container_name: browser
-  volumes:
-    - "../data/media:/var/www"
-  environment:
-    - VIRTUAL_HOST=browser.lobr.fr
+version: '2'
+
+services:
+
+  app:
+    image: clue/h5ai
+    container_name: browser
+    volumes:
+      - "../data/media:/var/www"
+    environment:
+      - VIRTUAL_HOST=browser.lobr.fr
