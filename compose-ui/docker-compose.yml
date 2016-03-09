@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: francescou/docker-compose-ui:1.0.RC1
+    image: francescou/docker-compose-ui
     container_name: compose-ui
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
