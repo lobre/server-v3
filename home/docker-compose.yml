@@ -14,10 +14,11 @@ services:
   gen:
     image: jwilder/docker-gen
     container_name: home-gen
-    command: "-watch -only-exposed /etc/docker-gen/templates/template.html /usr/share/nginx/html/index.html"
+    command: "-watch -only-exposed /etc/docker-gen/templates/template.html /web/index.html"
     volumes:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
-      - "./web:/etc/docker-gen/templates"
+      - "./template.html:/etc/docker-gen/templates/template.html"
+      - "web:/web"
     network_mode: "bridge"
 
 volumes:
