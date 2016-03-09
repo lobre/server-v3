@@ -8,3 +8,4 @@ services:
       - "../data/media:/var/www"
     environment:
       - VIRTUAL_HOST=browser.lobr.fr
+    network_mode: "bridge"

@@ -9,3 +9,4 @@ services:
       - "..:/opt/docker-compose-projects"
     environment:
       - VIRTUAL_HOST=compose.lobr.fr
+    network_mode: "bridge"

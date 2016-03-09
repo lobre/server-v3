@@ -13,6 +13,7 @@ services:
       - COUNTRY_CODE=FR
       - STATE=France
       - LOCALITY=Lyon
+    network_mode: "bridge"
 
   nginx:
     image: jwilder/nginx-proxy
@@ -26,3 +27,4 @@ services:
       - "./passwords:/etc/nginx/htpasswd"
     environment:
       - DEFAULT_HOST=home.lobr.fr
+    network_mode: "bridge"
