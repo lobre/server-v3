@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  app:
+    image: dockerui/dockerui
+    container_name: docker-ui
+    privileged: true
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - VIRTUAL_HOST=docker-ui.lobr.fr
+    network_mode: "bridge"
