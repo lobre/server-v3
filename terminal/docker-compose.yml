@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  app:
+    image: sspreitzer/shellinabox
+    container_name: terminal
+    environment:
+      - VIRTUAL_HOST=terminal.lobr.fr
+      - SIAB_SUDO=true
+      - SIAB_USER=admin
+      - SIAB_PASSWORD=terminal012
+    network_mode: "bridge"
