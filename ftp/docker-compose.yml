@@ -1,14 +1,22 @@
-app:
-  image: mcreations/ftp
-  container_name: ftp
-  volumes:
-    - "../data/media:/data/admin"
-  ports:
-    - "21:21"
-    - "65000-65004:65000-65004"
-  environment:
-    - FTP_USER=admin
-    - FTP_PASS=ftp012
-    - HOST=lobr.fr
-    - PASV_MIN_PORT=65000
-    - PASV_MAX_PORT=65004
+version: '2'
+
+services:
+  app:
+    image: mcreations/ftp
+    container_name: ftp
+    volumes:
+      - "media:/data/admin"
+    ports:
+      - "21:21"
+      - "65000-65004:65000-65004"
+    environment:
+      - FTP_USER=admin
+      - FTP_PASS=ftp012
+      - HOST=lobr.fr
+      - PASV_MIN_PORT=65000
+      - PASV_MAX_PORT=65004
+    network_mode: "bridge"
+
+volumes:
+  media:
+    external: true
