@@ -1,15 +1,23 @@
-app:
-  image: linuxserver/couchpotato
-  container_name: couchpotato
-  ports:
-    - "5050:5050"
-  volumes:
-    - "/etc/localtime:/etc/localtime:ro"
-    - "./config:/config"
-    - "../data/media/Downloads:/downloads"
-    - "../data/media/Movies:/movies"
-  environment:
-    - PUID=1000
-    - PGID=1000
-    - VIRTUAL_HOST=couchpotato.lobr.fr
-    - VIRTUAL_PORT=5050
+version: '2'
+
+services:
+  app:
+    image: linuxserver/couchpotato
+    container_name: couchpotato
+    ports:
+      - "5050:5050"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./config.ini:/config/config.ini"
+      - "media:/downloads"
+      - "media:/movies"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VIRTUAL_HOST=couchpotato.lobr.fr
+      - VIRTUAL_PORT=5050
+    network_mode: "bridge"
+
+volumes:
+  media:
+    external: true
