@@ -1,14 +1,22 @@
-app:
-  image: linuxserver/plex
-  container_name: plex
-  ports:
-    - "32400:32400"
-  volumes:
-    - "./config:/config"
-    - "../data/media:/data"
-  environment:
-    - PUID=1000
-    - PGID=1000
-    - VERSION=plexpass
-    - VIRTUAL_HOST=plex.lobr.fr
-    - VIRTUAL_PORT=32400
+version: '2'
+
+services:
+  app:
+    image: linuxserver/plex
+    container_name: plex
+    ports:
+      - "32400:32400"
+    volumes:
+      - "./Preferences.xml:/config/Library/Application Support/Plex Media Server/Preferences.xml"
+      - "media:/data"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=plexpass
+      - VIRTUAL_HOST=plex.lobr.fr
+      - VIRTUAL_PORT=32400
+    network_mode: "bridge"
+
+volumes:
+  media:
+    external: true

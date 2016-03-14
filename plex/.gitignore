@@ -1,8 +1,0 @@
-/config/Library/Application Support/Plex Media Server/Cache
-/config/Library/Application Support/Plex Media Server/Crash Reports
-/config/Library/Application Support/Plex Media Server/Logs
-/config/Library/Application Support/Plex Media Server/plexmediaserver.pid
-/config/Library/Application Support/Plex Media Server/Plug-in*
-/config/Library/Application Support/Plex Media Server/Scanners
-/config/Library/Application Support/Plex Media Server/Thumbnails
-/config/Library/linuxserver*
