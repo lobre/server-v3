@@ -1,22 +1,30 @@
-app:
-  image: linuxserver/pydio
-  container_name: pydio
-  links:
-    - db
-  volumes:
-    - "../data/media:/data/files"
-    - "./config:/config"
-    - "/etc/localtime:/etc/localtime:ro"
-  environment:
-    - PUID=1000
-    - PGID=1000
-    - VIRTUAL_HOST=pydio.lobr.fr
-    - VIRTUAL_PORT=443
-    - VIRTUAL_PROTO=https
+version: '2'
 
-db:
-  image: mysql
-  container_name: pydio-db
-  environment:
-    - MYSQL_ROOT_PASSWORD=pydio
-    - MYSQL_DATABASE=pydio
+services:
+  app:
+    image: linuxserver/pydio
+    container_name: pydio
+    links:
+      - db
+    volumes:
+      - "media:/data/files"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VIRTUAL_HOST=pydio.lobr.fr
+      - VIRTUAL_PORT=443
+      - VIRTUAL_PROTO=https
+    network_mode: "bridge"
+
+  db:
+    image: mysql
+    container_name: pydio-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=pydio
+      - MYSQL_DATABASE=pydio
+    network_mode: "bridge"
+
+volumes:
+  media:
+    external: true
