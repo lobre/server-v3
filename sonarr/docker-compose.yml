@@ -8,7 +8,6 @@ services:
       - "8989:8989"
     volumes:
       - "/dev/rtc:/dev/rtc:ro"
-      - "./config.xml:/config/config.xml"
       - "media:/downloads"
       - "media:/tv"
     environment:

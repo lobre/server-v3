@@ -4,7 +4,7 @@ Add download client.
 
     host: lobr.fr
     port: 8112
-    password: deluge
+    password: deluge012
 
 Add indexers `KickassTorrents, Nyaa, Rarbg`.
 
