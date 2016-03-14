@@ -1,14 +1,25 @@
-app:
-  image: linuxserver/deluge
-  container_name: deluge
-  ports:
-    - "8112:8112"
-    - "58846:58846"
-  volumes:
-    - "./config:/config"
-    - "../data/media/Downloads:/downloads"
-  environment:
-    - PUID=1000
-    - PGID=1000
-    - VIRTUAL_HOST=deluge.lobr.fr
-    - VIRTUAL_PORT=8112
+version: '2'
+
+services:
+  app:
+    image: linuxserver/deluge
+    container_name: deluge
+    ports:
+      - "8112:8112"
+      - "58846:58846"
+    volumes:
+      - "./config/auth:/config/auth"
+      - "./config/core.conf:/config/core.conf"
+      - "./config/label.conf:/config/label.conf"
+      - "./config/web.conf:/config/web.conf"
+      - "media:/downloads"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VIRTUAL_HOST=deluge.lobr.fr
+      - VIRTUAL_PORT=8112
+    network_mode: "bridge"
+
+volumes:
+  media:
+    external: true
