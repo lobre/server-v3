@@ -12,3 +12,5 @@ Add plex as connection.
 
     host: lobr.fr
     port: 32400
+
+Add form authentication.
