@@ -3,11 +3,11 @@ version: '2'
 services:
   app:
     image: realms/realms-wiki
-    container_name: note
+    container_name: notes
     volumes:
       - "data:/tmp"
     environment:
-      - VIRTUAL_HOST=note.lobr.fr
+      - VIRTUAL_HOST=notes.lobr.fr
       - VIRTUAL_PORT=5000
     network_mode: "bridge"
 
