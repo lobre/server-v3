@@ -3,7 +3,7 @@ version: '2'
 services:
   app:
     image: realms/realms-wiki
-    container_name: realms-wiki
+    container_name: note
     volumes:
       - "data:/tmp"
     environment:
