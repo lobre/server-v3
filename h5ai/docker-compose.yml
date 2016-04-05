@@ -8,6 +8,8 @@ services:
       - "media:/var/www"
     environment:
       - VIRTUAL_HOST=browser.lobr.fr
+      - LETSENCRYPT_HOST=browser.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
     network_mode: "bridge"
 
 volumes:

@@ -9,4 +9,6 @@ services:
       - "..:/opt/docker-compose-projects"
     environment:
       - VIRTUAL_HOST=compose-ui.lobr.fr
+      - LETSENCRYPT_HOST=compose-ui.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
     network_mode: "bridge"

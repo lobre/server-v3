@@ -18,6 +18,8 @@ services:
       - PGID=1000
       - VIRTUAL_HOST=deluge.lobr.fr
       - VIRTUAL_PORT=8112
+      - LETSENCRYPT_HOST=deluge.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
     network_mode: "bridge"
 
 volumes:

@@ -9,6 +9,8 @@ services:
     environment:
       - VIRTUAL_HOST=notes.lobr.fr
       - VIRTUAL_PORT=5000
+      - LETSENCRYPT_HOST=notes.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
     network_mode: "bridge"
 
 volumes:

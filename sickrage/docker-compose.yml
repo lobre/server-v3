@@ -16,6 +16,8 @@ services:
       - PGID=1000
       - VIRTUAL_HOST=sickrage.lobr.fr
       - VIRTUAL_PORT=8081
+      - LETSENCRYPT_HOST=sickrage.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
     network_mode: "bridge"
 
 volumes:
