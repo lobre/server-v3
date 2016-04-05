@@ -21,13 +21,11 @@ services:
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: proxy-companion
+    volumes_from:
+      - nginx
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "certs:/etc/nginx/certs:rw"
-      - "vhost:/etc/nginx/vhost.d"
-      - "challenge:/usr/share/nginx/html"
-    volumes_from:
-      - nginx
     network_mode: "bridge"
 
 volumes:
