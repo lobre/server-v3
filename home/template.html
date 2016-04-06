@@ -70,7 +70,8 @@
     <div class="container">
 
         {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
-            {{ if len($containers) >= 1 }}
+            {{ var $containerLen := len $containers }}
+            {{ if ge $containerLen 1 }}
                 {{ var $value = $containers[0] }}
                 <div class="col-lg-2 col-md-2 col-xs-4">
                     <div class="item" onclick="window.open('http://{{ $host }}')">
