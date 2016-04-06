@@ -70,14 +70,15 @@
     <div class="container">
 
         {{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
-            {{ range $index, $value := $containers }}
+            {{ if len($containers) >= 1 }}
+                {{ var $value = $containers[0] }}
                 <div class="col-lg-2 col-md-2 col-xs-4">
                     <div class="item" onclick="window.open('http://{{ $host }}')">
-                        <img data-name="{{$value.Name}}" class="profile"/>
-                        <a class="link" href="http://{{ $host }}" target="_blank">{{$value.Name}}</a>
+                        <img data-name="{{ $value.Name }}" class="profile"/>
+                        <a class="link" href="http://{{ $host }}" target="_blank">{{ $value.Name }}</a>
                     </div>
                 </div>
-            {{ end }}
+            {{end}}
         {{ end }}
         
     </div>
