@@ -6,7 +6,7 @@ services:
     container_name: vpn
     privileged: true
     ports:
-      - "1195:1194/udp"
+      - "8082:1194/udp"
       - "8080:443/tcp"
     network_mode: "bridge"
 
