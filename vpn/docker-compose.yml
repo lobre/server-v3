@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  server:
+    image: jpetazzo/dockvpn
+    container_name: vpn
+    privileged: true
+    ports:
+      - "1194:1194"
+      - "443:443"
+    network_mode: "bridge"
+
+  config:
+    image: jpetazzo/dockvpn
+    container_name: vpn-config
+    command: "serveconfig"
+    volumes_from:
+      - server
+    ports:
+      - "8080:8080"
+    environment:
+      - VIRTUAL_HOST=vpn.lobr.fr
+      - VIRTUAL_PROTO=https
+      - CERT_NAME=none
+    network_mode: "bridge"
