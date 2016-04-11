@@ -5,6 +5,8 @@ services:
     image: jpetazzo/dockvpn
     container_name: vpn
     privileged: true
+    volumes:
+      - "./run:/usr/local/sbin/run"
     ports:
       - "8082:1194/udp"
       - "8080:443/tcp"
@@ -16,6 +18,8 @@ services:
     command: "serveconfig"
     volumes_from:
       - server
+    volumes:
+      - "./run:/usr/local/sbin/run"
     environment:
       - VIRTUAL_HOST=vpn.lobr.fr
       - VIRTUAL_PORT=8080
