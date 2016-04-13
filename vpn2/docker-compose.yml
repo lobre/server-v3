@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  genconfig:
+    image: kylemanna/openvpn
+    container_name: vpn-genconfig
+    command: ovpn_genconfig
+    user: tcp://vpn.lobr.fr
+    volumes:
+      - "data:/etc/openvpn"
+    network_mode: "bridge"
+
+  initpki:
+    image: kylemanna/openvpn
+    container_name: vpn-initpki
+    command: ovpn_initpki
+    volumes:
+      - "data:/etc/openvpn"
+    network_mode: "bridge"
+
+  server:
+    image: kylemanna/openvpn
+    container_name: vpn-server
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8087:1194/tcp"
+    volumes:
+      - "data:/etc/openvpn"
+    network_mode: "bridge"
+
+  certificate:
+    image: kylemanna/openvpn
+    container_name: vpn-certificate
+    command: "easyrsa build-client-full clientname nopass"
+    volumes:
+      - "data:/etc/openvpn"
+    network_mode: "bridge"
+
+volumes:
+  data:
+    driver: local
