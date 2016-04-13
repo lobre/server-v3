@@ -19,7 +19,7 @@ chmod 600 key.pem
 [ -f cert.pem ] ||
     openssl x509 -req -in csr.pem -out cert.pem -signkey key.pem -days 24855
 
-[ -f tcp443.conf ] || cat >tcp443.conf <<EOF
+[ -f tcp-https.conf ] || cat >tcp-https.conf <<EOF
 server 192.168.255.0 255.255.255.128
 verb 3
 duplicate-cn
@@ -34,12 +34,12 @@ push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 
 proto tcp-server
-port 8080
-dev tun443
-status openvpn-status-443.log
+port 8083
+dev tun8083
+status openvpn-status-https.log
 EOF
 
-[ -f udp1194.conf ] || cat >udp1194.conf <<EOF
+[ -f udp-vpn.conf ] || cat >udp-vpn.conf <<EOF
 server 192.168.255.128 255.255.255.128
 verb 3
 duplicate-cn
@@ -55,8 +55,8 @@ push "dhcp-option DNS 8.8.4.4"
 
 proto udp
 port 8082
-dev tun1194
-status openvpn-status-1194.log
+dev tun8082
+status openvpn-status-vpn.log
 EOF
 
 MY_IP_ADDR=$(curl -s http://myip.enix.org/REMOTE_ADDR)
@@ -90,7 +90,7 @@ remote $MY_IP_ADDR 8082 udp
 </connection>
 
 <connection>
-remote $MY_IP_ADDR 8080 tcp-client
+remote $MY_IP_ADDR 8083 tcp-client
 </connection>
 EOF
 
@@ -104,7 +104,7 @@ EOF
 
 iptables -t nat -A POSTROUTING -s 192.168.255.0/24 -o eth0 -j MASQUERADE
 
-touch tcp443.log udp1194.log http8080.log
-while true ; do openvpn tcp443.conf ; done >> tcp443.log &
-while true ; do openvpn udp1194.conf ; done >> udp1194.log &
+touch tcp-https.log udp-vpn.log http-web.log
+while true ; do openvpn tcp-https.conf ; done >> tcp-https.log &
+while true ; do openvpn udp-vpn.conf ; done >> udp-vpn.log &
 tail -F *.log

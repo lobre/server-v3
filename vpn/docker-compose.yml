@@ -7,9 +7,10 @@ services:
     privileged: true
     volumes:
       - "./run:/usr/local/sbin/run"
+      - "./serveconfig:/usr/local/sbin/serveconfig"
     ports:
       - "8082:1194/udp"
-      - "8080:443/tcp"
+      - "8083:443/tcp"
     network_mode: "bridge"
 
   config:
@@ -20,6 +21,9 @@ services:
       - server
     volumes:
       - "./run:/usr/local/sbin/run"
+      - "./serveconfig:/usr/local/sbin/serveconfig"
+    ports:
+      - "8080:8080"
     environment:
       - VIRTUAL_HOST=vpn.lobr.fr
       - VIRTUAL_PORT=8080
