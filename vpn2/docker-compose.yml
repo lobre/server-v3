@@ -4,8 +4,7 @@ services:
   genconfig:
     image: kylemanna/openvpn
     container_name: vpn-genconfig
-    command: ovpn_genconfig
-    user: tcp://vpn.lobr.fr
+    command: "ovpn_genconfig -u tcp://vpn.lobr.fr"
     volumes:
       - "data:/etc/openvpn"
     network_mode: "bridge"
