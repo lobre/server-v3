@@ -86,7 +86,7 @@ redirect-gateway def1
 </dh>
 
 <connection>
-remote $MY_IP_ADDR 8082 udp
+remote $MY_IP_ADDR 8082 tcp
 </connection>
 
 <connection>

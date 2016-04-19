@@ -9,7 +9,7 @@ services:
       - "./run:/usr/local/sbin/run"
       - "./serveconfig:/usr/local/sbin/serveconfig"
     ports:
-      - "8082:1194/udp"
+      - "8082:1194/tcp"
       - "8083:443/tcp"
     network_mode: "bridge"
 
