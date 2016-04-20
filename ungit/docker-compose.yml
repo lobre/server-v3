@@ -6,8 +6,8 @@ services:
     container_name: ungit
     volumes:
       - "..:/repo"
-      - "$SSH_AUTH_SOCK:/ssh-agent"
-      - "$HOME/.ssh/known_hosts:/root/.ssh/known_hosts"
+      - "${SSH_AUTH_SOCK}:/ssh-agent"
+      - "${HOME}/.ssh/known_hosts:/root/.ssh/known_hosts"
     environment:
       - VIRTUAL_HOST=ungit.lobr.fr
       - VIRTUAL_PORT=8448
