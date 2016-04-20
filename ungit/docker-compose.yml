@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  app:
+    image: reinblau/ungit
+    container_name: ungit
+    volumes:
+      - "..:/repo"
+      - "$SSH_AUTH_SOCK:/ssh-agent"
+      - "$HOME/.ssh/known_hosts:/root/.ssh/known_hosts"
+    environment:
+      - VIRTUAL_HOST=ungit.lobr.fr
+      - VIRTUAL_PORT=8448
+      - LETSENCRYPT_HOST=ungit.lobr.fr
+      - LETSENCRYPT_EMAIL=loric.brevet@gmail.com
+      - SSH_AUTH_SOCK=/ssh-agent
+    network_mode: "bridge"
